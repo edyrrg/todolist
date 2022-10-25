@@ -1,24 +1,39 @@
 import React, { useState } from "react";
 import TodoForm from "./TodoForm";
 import Todo from "./Todo";
+import axios from "axios";
 import { useEffect } from "react";
+import { getTodos, patchTodo } from "../util/api";
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    console.log(todos);
-  }, [todos]);
+    getTodos().then((remoteTodos) => {
+      setTodos(remoteTodos)
+    })
+  }, []);
 
-  const addTodo = (todo) => {
+  const addTodo = async (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
 
-    const newTodos = [todo, ...todos];
+    axios
+      .post("http://localhost:3000/api/v1/to-dos", {
+        ...todo,
+        title: todo.text
+      })
+      .then(() => {
+        getTodos().then((remoteTodos) => {
+          setTodos(remoteTodos)
+        })
+      });
 
-    setTodos(newTodos);
-    console.log(...todos);
+    // const newTodos = [todo, ...todos];
+
+    //setTodos(newTodos);
+    //console.log(...todos);
   };
 
   const showDescription = (todoId) => {
@@ -36,25 +51,38 @@ function TodoList() {
       return;
     }
 
-    setTodos((prev) =>
-      prev.map((item) => (item.id === todoId ? newValue : item))
-    );
+    patchTodo(todoId, newValue)
+      .then(() => {
+        getTodos().then((remoteTodos) => {
+          setTodos(remoteTodos)
+        })
+      })
   };
 
   const removeTodo = (id) => {
-    const removedArr = [...todos].filter((todo) => todo.id !== id);
-
-    setTodos(removedArr);
+    axios
+      .delete(`http://localhost:3000/api/v1/to-dos/${id}`)
+      .then(() => {
+        getTodos().then((remoteTodos) => {
+          setTodos(remoteTodos)
+        })
+      })
   };
 
   const completeTodo = (id) => {
     let updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
-        todo.isComplete = !todo.isComplete;
+        todo.is_done = !todo.is_done;
+        patchTodo(id, { ...todo })
+        // .then(() => {
+        //   getTodos().then((remoteTodos) => {
+        //     setTodos(remoteTodos)
+        //   })
+        // })
       }
       return todo;
     });
-    setTodos(updatedTodos);
+    setTodos(updatedTodos)
   };
 
   return (

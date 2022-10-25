@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link type="image/png" rel="icon" href="%PUBLIC_URL%/todo-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link type="image/png" rel="icon" href="%PUBLIC_URL%/todo-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="stylesheet" href="index.css">
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,12 +23,13 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>To Do List</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+  <title>To Do List</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -39,5 +39,20 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+  <footer class="footer">
+    <div class="me">
+      <h4>by Edy Rojas (ryuk) ❤</h4>
+      <nav class="nav-footer">
+        <a href="https://github.com/edyrrg/todolist"><img
+            src="	https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"
+            alt="repo github link"></a>
+        <a href="https://github.com/edyrrg"><img
+            src="https://img.shields.io/github/followers/edyrrg.svg?style=social&label=Follow&maxAge=2592000"
+            alt="github followers"></a>
+      </nav>
+    </div>
+  </footer>
+  <script> configObj = { "buttonD": "M11.384 13.333h9.232c.638 0 .958.68.505 1.079l-4.613 4.07c-.28.246-.736.246-1.016 0l-4.613-4.07c-.453-.399-.133-1.079.505-1.079z", "buttonT": "translate(-1028 -172) translate(832 140) translate(32 32) translate(164) matrix(1 0 0 -1 0 32)", "shadowSize": "none", "roundnessSize": "12px", "buttonDToBottom": "32px", "buttonDToRight": "32px", "selectedBackgroundColor": "#161a2b", "selectedIconColor": "#ffffff", "buttonWidth": "40px", "buttonHeight": "40px", "svgWidth": "32px", "svgHeight": "32px" }; function createButton(obj, pageSimulator) { const body = document.querySelector("body"); backToTopButton = document.createElement("span"); backToTopButton.classList.add("softr-back-to-top-button"); backToTopButton.id = "softr-back-to-top-button"; pageSimulator ? pageSimulator.appendChild(backToTopButton) : body.appendChild(backToTopButton); backToTopButton.style.width = obj.buttonWidth; backToTopButton.style.height = obj.buttonHeight; backToTopButton.style.marginRight = obj.buttonDToRight; backToTopButton.style.marginBottom = obj.buttonDToBottom; backToTopButton.style.borderRadius = obj.roundnessSize; backToTopButton.style.boxShadow = obj.shadowSize; backToTopButton.style.color = obj.selectedBackgroundColor; backToTopButton.style.backgroundColor = obj.selectedBackgroundColor; pageSimulator ? backToTopButton.style.position = "absolute" : backToTopButton.style.position = "fixed"; backToTopButton.style.outline = "none"; backToTopButton.style.bottom = "0px"; backToTopButton.style.right = "0px"; backToTopButton.style.cursor = "pointer"; backToTopButton.style.textAlign = "center"; backToTopButton.style.border = "solid 2px currentColor"; backToTopButton.innerHTML = '<svg class="back-to-top-button-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" > <g fill="none" fill-rule="evenodd"> <path d="M0 0H32V32H0z" transform="translate(-1028 -172) translate(832 140) translate(32 32) translate(164) matrix(1 0 0 -1 0 32)" /> <path class="back-to-top-button-img" fill-rule="nonzero" d="M11.384 13.333h9.232c.638 0 .958.68.505 1.079l-4.613 4.07c-.28.246-.736.246-1.016 0l-4.613-4.07c-.453-.399-.133-1.079.505-1.079z" transform="translate(-1028 -172) translate(832 140) translate(32 32) translate(164) matrix(1 0 0 -1 0 32)" /> </g> </svg>'; backToTopButtonSvg = document.querySelector(".back-to-top-button-svg"); backToTopButtonSvg.style.verticalAlign = "middle"; backToTopButtonSvg.style.margin = "auto"; backToTopButtonSvg.style.justifyContent = "center"; backToTopButtonSvg.style.width = obj.svgWidth; backToTopButtonSvg.style.height = obj.svgHeight; backToTopButton.appendChild(backToTopButtonSvg); backToTopButtonImg = document.querySelector(".back-to-top-button-img"); backToTopButtonImg.style.fill = obj.selectedIconColor; backToTopButtonSvg.appendChild(backToTopButtonImg); backToTopButtonImg.setAttribute("d", obj.buttonD); backToTopButtonImg.setAttribute("transform", obj.buttonT); if (!pageSimulator) { backToTopButton.style.display = "none"; window.onscroll = function () { if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { backToTopButton.style.display = "block"; } else { backToTopButton.style.display = "none"; } }; backToTopButton.onclick = function () { document.body.scrollTop = 0; document.documentElement.scrollTop = 0; }; } }; document.addEventListener("DOMContentLoaded", function () { createButton(configObj, null); });</script>
+</body>
+
 </html>

@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,9 +15,7 @@
 
 body {
   min-height: 100vh;
-  background: linear-gradient(0deg,
-      rgba(48, 16, 255, 1) 0%,
-      rgba(100, 115, 255, 1) 100%);
+  background: linear-gradient(0deg, rgba(63,94,251,1) 0%, rgba(201,70,252,1) 100%);
 }
 
 .todo-app {
@@ -22,7 +24,7 @@ body {
   justify-content: start;
   width: 520px;
   min-height: 400px;
-  background: #161a2b;
+  background: rgb(22, 26, 43);
   text-align: center;
   margin: 50px auto;
   border-radius: 25px;
@@ -49,7 +51,7 @@ h1 {
 .todo-input {
   padding: 14px 32px 14px 16px;
   border-radius: 4px;
-  border: 2px solid #5d0cff;
+  border: 2px solid rgb(93, 12, 255);
   outline: none;
   width: 70%;
   background: transparent;

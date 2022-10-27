@@ -15,7 +15,7 @@ html {
 
 body {
   min-height: 100vh;
-  background: linear-gradient(0deg, rgba(63,94,251,1) 0%, rgba(201,70,252,1) 100%);
+  background: linear-gradient(0deg, rgba(63, 94, 251, 1) 0%, rgba(201, 70, 252, 1) 100%);
 }
 
 .todo-app {
@@ -26,7 +26,7 @@ body {
   min-height: 400px;
   background: rgb(22, 26, 43);
   text-align: center;
-  margin: 50px auto;
+  margin: 50px auto 40px auto;
   border-radius: 25px;
   padding: 0 50px;
   padding-bottom: 32px;
@@ -35,7 +35,7 @@ body {
 h1 {
   margin: 32px 0;
   color: #fff;
-  font-size: 24px;
+  font-size: 25px;
 }
 
 .complete {
@@ -110,8 +110,8 @@ h1 {
   margin: 4px auto;
   color: #fff;
   background: linear-gradient(90deg,
-      rgba(255, 118, 20, 1) 0%,
-      rgba(255, 84, 17, 1) 100%);
+      rgba(87, 10, 87, 1) 0%,
+      rgba(46, 2, 73, 1) 100%);
 
   padding: 16px;
   border-radius: 5px;
